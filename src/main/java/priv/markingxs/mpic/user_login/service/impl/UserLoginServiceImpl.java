@@ -1,5 +1,7 @@
 package priv.markingxs.mpic.user_login.service.impl;
 
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
@@ -20,15 +22,20 @@ import java.util.List;
  * @author MARKinGxS
  * @since 2020-01-29
  */
-@Service
-@Component("iUserLoginService")
+@Service("userLoginservice")
 public class UserLoginServiceImpl extends ServiceImpl<UserLoginMapper, UserLogin> implements IUserLoginService {
 
-
-    private UserLoginMapper userLoginMapper = super.getBaseMapper();
+    @Autowired
+    private UserLoginMapper userLoginMapper;
 
     @Override
     public List<UserLogin> getLoginInfo() {
+        List<UserLogin> userLoginList = userLoginMapper.selectAllLoginInfo();
+        for (UserLogin user : userLoginList) {
+            System.out.println("user:"+user);
+        }
         return userLoginMapper.selectAllLoginInfo();
     }
+
+
 }

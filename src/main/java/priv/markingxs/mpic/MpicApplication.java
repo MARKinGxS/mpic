@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-@MapperScan(basePackages = "priv.markingxs.mpic.user_login")
+@MapperScan(basePackages = {"priv.markingxs.mpic"})
 public class MpicApplication {
 
 	public static void main(String[] args) {
