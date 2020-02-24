@@ -10,9 +10,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author MARKinGxS
- * @since 2020-02-03
+ * @since 2020-02-21
  */
-
 @Mapper
 public interface WorksMapper extends BaseMapper<Works> {
 

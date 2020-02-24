@@ -1,5 +1,6 @@
 package priv.markingxs.mpic.user.service;
 
+import org.springframework.web.multipart.MultipartFile;
 import priv.markingxs.mpic.user.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -14,4 +15,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface IUserService extends IService<User> {
 
     User getUserForUserID(String userid);
+
+    Boolean saveUserInfo(String userEmail, String userName, MultipartFile file);
 }

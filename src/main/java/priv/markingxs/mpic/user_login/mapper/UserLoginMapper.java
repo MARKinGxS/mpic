@@ -21,4 +21,6 @@ public interface UserLoginMapper extends BaseMapper<UserLogin> {
 
     @Select("select * from user_login")
     List<UserLogin> selectAllLoginInfo();
+
+
 }

@@ -34,11 +34,6 @@ public class User implements Serializable {
     private String userId;
 
     /**
-     * 用户性别，使用字典，0为null，1为男，2为女
-     */
-    private Integer userSex;
-
-    /**
      * 用户页面显示的昵称
      */
     private String userName;

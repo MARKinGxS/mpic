@@ -13,4 +13,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IUserLikeService extends IService<UserLike> {
 
+    void addLike(String workId,String userId);
+
+    void removeLike(String workId,String userId);
+
+    Integer ifWorkLike(String workId,String userId);
 }

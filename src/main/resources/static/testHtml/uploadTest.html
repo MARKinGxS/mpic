@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Picture</title>
+</head>
+<body>
+    <div>
+        <!--action="http://localhost:8080/works/works/imageUpload"-->
+        <form action="http://localhost:8080/works/works/imageUpload" id="formDemo" method="post" enctype="multipart/form-data">
+            <input type="file" name="fileName" id="filename" accept="image/png, image/jpeg, image/jpg" onchange="onLoadImage()"/>
+            <input name="username" id="username" />
+            <input id="workcontent"/>
+            <input type="button" id="submitBtn" onclick="checkSubmit()" value="上传"/>
+        </form>
+        <div id="onLoadImage"></div>
+    </div>
+</body>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript">
+    function checkImage() {
+        let fileName = $("#filename").val();
+        let url=fileName.split("\\");
+        let flag = true;
+        //文件名
+        fileName = url[url.length-1];
+        //文件后缀
+        let fileUrl = fileName.split(".");
+        let fileSuffix = fileUrl[fileUrl.length-1];
+
+        /*let size = $("#filename")[0].files[0].size;
+        if(size/1000>100){
+            flag = false;
+            alert("Upload File is not bigger than 100KB");
+        }*/
+        if(!flag)
+            $("#filename").val("");
+        return flag;
+    }
+
+    function checkSubmit() {
+        if(checkImage()){
+            toRequest();
+        }else{
+            $("#submitBtn").attr('type','button');
+
+        }
+    }
+
+    function onLoadImage() {
+        if(checkImage()){
+            let file=$('#filename').get(0).files[0];
+            console.log("file",file)
+            let reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onloadend = function (e) {
+                $("#onLoadImage").html('<img src="' + this.result +'" alt="" />');
+            }
+        }
+    }
+
+    function toRequest(){
+        let formData = new FormData($("#formDemo")[0])
+        formData.append('fileName',$('#filename').get(0).files[0])
+        formData.append('userNickname',$('#username').val())
+        //formData.append('workcontent',$('#workcontent').val())
+
+        console.log("$('#filename')[0]:      ",$('#filename').get(0))
+        $(function () {
+            $.ajax({
+                type:"POST",
+                url:"http://localhost:8080/user/user/saveUserInfo",
+                cache:false,
+                contentType: false,
+                processData: false,
+                data:formData,
+                headers:{
+                    'useremail':'1171779482@qq.com'
+                },
+                success:function (res) {
+                    alert(res);
+                }
+            });
+        })
+
+    }
+</script>
+</html>

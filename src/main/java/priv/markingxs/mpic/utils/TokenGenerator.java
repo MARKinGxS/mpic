@@ -1,5 +1,6 @@
 package priv.markingxs.mpic.utils;
 
+
 import java.util.UUID;
 
 //token生成工具类
@@ -12,4 +13,5 @@ public class TokenGenerator {
     private static String tokenMaker(){
         return UUID.randomUUID().toString().replaceAll("-","");
     }
+
 }

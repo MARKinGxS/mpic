@@ -40,5 +40,13 @@ public class WorksComments implements Serializable {
      */
     private String commentFatherId;
 
+    /**
+     * 评论的用户email
+     */
+    private String userEmail;
 
+    /**
+     * 评论内容
+     */
+    private String commentContent;
 }

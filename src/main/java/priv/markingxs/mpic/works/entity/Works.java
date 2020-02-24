@@ -1,6 +1,6 @@
 package priv.markingxs.mpic.works.entity;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,7 +12,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author MARKinGxS
- * @since 2020-02-03
+ * @since 2020-02-21
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -39,12 +39,27 @@ public class Works implements Serializable {
     /**
      * 作品上传时间
      */
-    private LocalDate workUploadTime;
+    private LocalDateTime workUploadTime;
 
     /**
-     * 作品审核步骤，0为进入一层审核，1为进入第二层审核，2为通过审核，-1为未通过
+     * 作品审核步骤，0为正在审核，1为通过审核，-1为未通过
      */
     private Integer workVerifyStep;
+
+    /**
+     * 作品路径
+     */
+    private String workUrl;
+
+    /**
+     * 作品隶属的用户id
+     */
+    private String userId;
+
+    /**
+     * 作品概述
+     */
+    private String workDescribe;
 
 
 }

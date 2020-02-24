@@ -13,4 +13,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IUserFollowService extends IService<UserFollow> {
 
+    Boolean addFollow(String pageUserId,String userId);
+
+    Boolean removeFollow(String pageUserId,String userId);
+
+    Integer ifFollow(String pageUserId, String userId);
 }
